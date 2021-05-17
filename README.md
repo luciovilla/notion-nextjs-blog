@@ -44,4 +44,7 @@ View this sample template table in [Notion](https://www.notion.so/8dde3326f8cb4c
 Run `npm run dev`
 
 ## Credits
-Tk Tk
+Thankful for the following people as I was inspired by their code:
+- [samuelkraft](https://github.com/samuelkraft/notion-blog-nextjs)
+- [ijjk](https://github.com/ijjk/notion-blog)
+- [leerob](https://github.com/leerob/leerob.io)
