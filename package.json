@@ -1,7 +1,17 @@
 {
   "name": "notion-nextjs-blog",
+  "description": "A starter blog template powered by Next.js, Notion API and Tailwind CSS",
   "version": "0.1.0",
-  "private": true,
+  "author": {
+    "name": "Lucio Villa",
+    "email": "hi@luciovilla.com",
+    "url": "https://luciovilla.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luciovilla/notion-nextjs-blog.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -14,7 +24,6 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "0.4.0",
     "autoprefixer": "10.2.5",
     "postcss": "8.2.15",
     "tailwindcss": "2.1.2"
