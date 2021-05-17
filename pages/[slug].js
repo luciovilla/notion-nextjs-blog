@@ -1,75 +1,14 @@
-import { Fragment } from 'react'
 import BlogLayout from '../layouts/BlogLayout'
 import { getNotionData, getPage, getBlocks } from '../lib/getNotionData'
-import { Text, ListItem } from '../components/ContentBlocks'
+import { Text, ListItem, Heading, ToDo, Toggle } from '../components/ContentBlocks'
 
 const databaseId = process.env.NOTION_DATABASE_ID
-
-const renderBlock = (block) => {
-  const { type, id } = block
-  const value = block[type]
-  const { text } = value
-
-  switch (type) {
-    case 'paragraph':
-      return <Text text={value.text} id={id} />
-
-    case 'heading_1':
-      return (
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight my-2 text-black">
-          {text[0].text.content}
-        </h1>
-      )
-
-    case 'heading_2':
-      return (
-        <h2 className="font-bold text-2xl md:text-3xl tracking-tight my-2 text-black">
-          {text[0].text.content}
-        </h2>
-      )
-
-    case 'heading_3':
-      return (
-        <h3 className="font-bold text-lg md:text-xl tracking-tight my-2 text-black">
-          {text[0].text.content}
-        </h3>
-      )
-
-    case 'bulleted_list_item':
-    case 'numbered_list_item':
-      return (
-        <li>
-          <ListItem text={value.text} id={id} />
-        </li>
-      )
-
-    case 'to_do':
-      return (
-        <div>
-          <label htmlFor={id}>
-            <input type="checkbox" id={id} defaultChecked={value.checked} /> {text[0].text.content}
-          </label>
-        </div>
-      )
-
-    case 'toggle':
-      return (
-        <details>
-          <summary>{text[0].text.content}</summary>
-          Toggle contents dont come through the API yet...
-        </details>
-      )
-
-    default:
-      return `Unsupported block (${type === 'unsupported' ? 'unsupported by Notion API' : type})`
-  }
-}
 
 export default function Post({ page, blocks }) {
   if (!page || !blocks) {
     return <div />
   }
-  const postTitle = page.properties.Post.title[0].plain_text
+
   return (
     <BlogLayout data={page} content={blocks}>
       <span className="text-sm text-gray-700">
@@ -79,11 +18,45 @@ export default function Post({ page, blocks }) {
           year: 'numeric',
         })}
       </span>
-      <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-5 text-black">{postTitle}</h1>
 
-      {blocks.map((block) => (
-        <Fragment key={block.id}>{renderBlock(block)}</Fragment>
-      ))}
+      <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-5 text-black">
+        {page.properties.Post.title[0].plain_text}
+      </h1>
+
+      {blocks.map((block) => {
+        const { type, id } = block
+        const value = block[type]
+        const { text } = value
+
+        switch (type) {
+          case 'paragraph':
+            return <Text text={value.text} id={id} key={id} />
+
+          case 'heading_1':
+            return <Heading text={text} id={id} level={type} key={id} />
+
+          case 'heading_2':
+            return <Heading text={text} id={id} level={type} key={id} />
+
+          case 'heading_3':
+            return <Heading text={text} id={id} level={type} key={id} />
+
+          case 'bulleted_list_item':
+          case 'numbered_list_item':
+            return <ListItem key={id} text={value.text} id={id} />
+
+          case 'to_do':
+            return <ToDo key={id} value={value} text={value.text} />
+
+          case 'toggle':
+            return <Toggle key={id} text={value.text} />
+
+          default:
+            return `Unsupported block (${
+              type === 'unsupported' ? 'unsupported by Notion API' : type
+            })`
+        }
+      })}
     </BlogLayout>
   )
 }
