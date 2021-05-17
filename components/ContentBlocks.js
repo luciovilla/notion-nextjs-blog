@@ -13,7 +13,7 @@ export const Text = ({ text, id }) => {
             className={[
               bold ? 'font-bold' : '',
               code ? 'bg-gray-100 p-1 font-mono text-sm rounded-md' : '',
-              italic ? 'italic' : '',
+              italic ? 'italic break-all' : '',
               strikethrough ? 'line-through' : '',
               underline ? 'underline' : '',
             ].join(' ')}
