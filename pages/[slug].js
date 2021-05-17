@@ -66,10 +66,10 @@ const renderBlock = (block) => {
 }
 
 export default function Post({ page, blocks }) {
-  const postTitle = page.properties.Post.title[0].plain_text
   if (!page || !blocks) {
     return <div />
   }
+  const postTitle = page.properties.Post.title[0].plain_text
   return (
     <BlogLayout data={page} content={blocks}>
       <span className="text-sm text-gray-700">
