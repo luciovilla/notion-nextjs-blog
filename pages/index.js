@@ -8,11 +8,11 @@ export default function Home({ posts }) {
     <Container>
       <div className="max-w-2xl mx-auto mb-16">
         <div className="flex justify-center items-center mb-4 max-w-sm mx-auto">
-          <Image src="/notion.svg" height={60} width={60} />
+          <Image src="/notion.svg" height={60} width={60} alt="Notion logo" />
           <span className="mx-4">+</span>
-          <Image src="/nextjs.svg" height={80} width={133} />
+          <Image src="/nextjs.svg" height={80} width={133} alt="Next.js logo" />
           <span className="mx-4">+</span>
-          <Image src="/tailwindcss.svg" height={24} width={192} />
+          <Image src="/tailwindcss.svg" height={24} width={192} alt="Tailwind CSS logo" />
         </div>
         <h1 className="font-bold text-3xl md:text-center w-full md:text-5xl tracking-tight mb-2 text-black mx-auto max-w-xl">
           Starter blog template powered by Next.js, Notion API and Tailwind CSS
