@@ -16,7 +16,7 @@ export default function Home({ posts }) {
         </div>
         <div className="mb-16">
           <h1 className="font-bold text-3xl md:text-center w-full md:text-5xl tracking-tight mb-2 text-black mx-auto max-w-xl">
-            Starter blog template powered by Next.js, Notion API and Tailwind CSS
+            Starter blog template powered by Next.js, Notion and Tailwind CSS
           </h1>
           <p className="text-gray-700 mb-5 md:text-center max-w-xl mx-auto">
             This is an open-source starter blog template that is statically generated with{' '}
@@ -28,14 +28,14 @@ export default function Home({ posts }) {
             >
               Next.js
             </a>
-            , content powered by the{' '}
+            , content powered by{' '}
             <a
               className="underline"
               target="_blank"
               rel="noopener noreferrer"
               href="https://developers.notion.com/"
             >
-              Notion API
+              Notion
             </a>
             , styled with{' '}
             <a

@@ -1,10 +1,10 @@
-# A Next.js, Notion API and Tailwind CSS starter blog template 
+# A Next.js, Notion and Tailwind CSS starter blog template 
 
-This is an open-source starter blog template that is statically generated with Next.js, content powered by the Notion API, styled with Tailwind CSS and deployed with Vercel.
+This is an open-source starter blog template that is statically generated with Next.js, content powered by Notion and styled with Tailwind CSS.
 
 *Still a work in progress.*
 
-**Live example hosted on Vercel**: 
+**Live example hosted on Vercel**: [https://blog.luciovilla.com](https://blog.luciovilla.com)
 
 ## Getting Started
 

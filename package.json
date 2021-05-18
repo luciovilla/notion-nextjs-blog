@@ -1,6 +1,6 @@
 {
   "name": "notion-nextjs-blog",
-  "description": "A starter blog template powered by Next.js, Notion API and Tailwind CSS",
+  "description": "A starter blog template powered by Next.js, Notion and Tailwind CSS",
   "version": "0.1.0",
   "author": {
     "name": "Lucio Villa",

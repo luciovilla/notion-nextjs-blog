@@ -44,7 +44,7 @@ export const ListItem = ({ text, id }) => {
   )
 }
 
-export const Heading = ({ text, id, level }) => {
+export const Heading = ({ text, level }) => {
   switch (level) {
     case 'heading_1':
       return (
