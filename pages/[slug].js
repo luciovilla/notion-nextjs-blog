@@ -49,7 +49,7 @@ export default function Post({ page, blocks }) {
             return <ToDo key={id} value={value} text={value.text} />
 
           case 'toggle':
-            return <Toggle key={id} text={value.text} />
+            return <Toggle key={id} text={value.text} children={value.children} />
 
           default:
             return `Unsupported block (${
@@ -80,10 +80,28 @@ export const getStaticProps = async (context) => {
   const page = await getPage(filter[0].id)
   const blocks = await getBlocks(filter[0].id)
 
+  const childrenBlocks = await Promise.all(
+    blocks
+      .filter((block) => block.has_children)
+      .map(async (block) => {
+        return {
+          id: block.id,
+          children: await getBlocks(block.id),
+        }
+      })
+  )
+
+  const blocksWithChildren = blocks.map((block) => {
+    if (block.has_children) {
+      block[block.type].children = childrenBlocks.find((x) => x.id === block.id).children
+    }
+    return block
+  })
+
   return {
     props: {
       page,
-      blocks,
+      blocks: blocksWithChildren,
     },
   }
 }
