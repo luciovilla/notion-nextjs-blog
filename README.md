@@ -43,6 +43,12 @@ View this sample template table in [Notion](https://www.notion.so/8dde3326f8cb4c
 
 Run `npm run dev`
 
+## Deploy your own
+
+Deploy your own Notion blog with Vercel.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fluciovilla%2Fnotion-nextjs-blog&env=NOTION_TOKEN,NOTION_DATABASE_ID&envDescription=Notion%20Integration%20token%20and%20Database%20ID%20required.&envLink=https%3A%2F%2Fblog.luciovilla.com%2Fnotion-blog-setup-instructions&project-name=notion-blog)
+
 ## Credits
 Thankful for the following people as I was inspired by their code:
 - [samuelkraft](https://github.com/samuelkraft/notion-blog-nextjs)
