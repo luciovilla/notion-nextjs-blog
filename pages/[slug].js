@@ -51,6 +51,16 @@ export default function Post({ page, blocks }) {
           case 'toggle':
             return <Toggle key={id} text={value.text} children={value.children} />
 
+          case 'image':
+            const imageSrc = value.type === 'external' ? value.external.url : value.file.url
+            const caption = value.caption.length ? value.caption[0].plain_text : ''
+            return (
+              <figure key={id}>
+                <img alt={caption} src={imageSrc} />
+                {caption && <figcaption className="mt-2">{caption}</figcaption>}
+              </figure>
+            )
+
           default:
             return `Unsupported block (${
               type === 'unsupported' ? 'unsupported by Notion API' : type
