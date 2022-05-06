@@ -22,7 +22,7 @@ This is an open-source starter blog template that is statically generated with N
 - `Slug` (text): this is the blog post's URL slug.
 - `Date` (date): the display date and meta published_time property.
 - `Description` (text): this is the preview text on the homepage and the meta description property.
-- `Published` (checkbox): Optional - this checks if a blog post should be displayed when deployed. 
+- `Published` (checkbox): this checks if a blog post should be displayed when deployed. 
 
 View this sample template table in [Notion](https://vast-rifle-eed.notion.site/8dde3326f8cb4cc68b47a96bea86e9be).
 
