@@ -1,5 +1,50 @@
+export const RenderBlocks = ({ blocks }) => {
+  return blocks.map((block) => {
+    const { type, id } = block
+    const value = block[type]
+
+    switch (type) {
+      case 'paragraph':
+        return <Text text={value.rich_text} id={id} key={id} />
+
+      case 'heading_1':
+        return <Heading text={value.rich_text} id={id} level={type} key={id} />
+
+      case 'heading_2':
+        return <Heading text={value.rich_text} id={id} level={type} key={id} />
+
+      case 'heading_3':
+        return <Heading text={value.rich_text} id={id} level={type} key={id} />
+
+      case 'bulleted_list_item':
+      case 'numbered_list_item':
+        return <ListItem key={id} value={value} id={id} />
+
+      case 'to_do':
+        return <ToDo key={id} value={value} />
+
+      case 'toggle':
+        return <Toggle key={id} value={value} />
+
+      case 'image':
+        const imageSrc = value.type === 'external' ? value.external.url : value.file.url
+        const caption = value.caption.length ? value.caption[0].plain_text : ''
+        return (
+          <figure key={id}>
+            <img alt={caption} src={imageSrc} />
+            {caption && <figcaption className="mt-2">{caption}</figcaption>}
+          </figure>
+        )
+
+      default:
+        return `Unsupported block (${type === 'unsupported' ? 'unsupported by Notion API' : type})`
+    }
+  })
+}
+
 const SpanText = ({ text, id }) => {
   if (!text) return null
+
   return text.map((value, i) => {
     const {
       annotations: { bold, code, color, italic, strikethrough, underline },
@@ -29,39 +74,40 @@ const SpanText = ({ text, id }) => {
   })
 }
 
-export const Text = ({ text, id }) => {
+const Text = ({ text, id }) => {
   return (
     <p className="mb-4 text-gray-700">
       <SpanText text={text} id={id} />
     </p>
   )
 }
-export const ListItem = ({ text, id }) => {
+
+const ListItem = ({ value, id }) => {
   return (
-    <li className="text-gray-700">
-      <SpanText text={text} id={id} />
+    <li>
+      <SpanText text={value.rich_text} id={id} />
     </li>
   )
 }
 
-export const Heading = ({ text, level }) => {
+const Heading = ({ text, level }) => {
   switch (level) {
     case 'heading_1':
       return (
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight my-2 text-black">
-          {text[0].text.content}
+          <SpanText text={text} />
         </h1>
       )
     case 'heading_2':
       return (
         <h2 className="font-bold text-2xl md:text-3xl tracking-tight my-2 text-black">
-          {text[0].text.content}
+          <SpanText text={text} />
         </h2>
       )
     case 'heading_3':
       return (
         <h3 className="font-bold text-lg md:text-xl tracking-tight my-2 text-black">
-          {text[0].text.content}
+          <SpanText text={text} />
         </h3>
       )
     default:
@@ -69,23 +115,24 @@ export const Heading = ({ text, level }) => {
   }
 }
 
-export const ToDo = ({ id, value, text }) => {
+const ToDo = ({ id, value }) => {
   return (
     <div>
       <label htmlFor={id}>
-        <input type="checkbox" id={id} defaultChecked={value.checked} /> {text[0].text.content}
+        <input type="checkbox" id={id} defaultChecked={value.checked} />{' '}
+        <SpanText text={value.rich_text} />
       </label>
     </div>
   )
 }
 
-export const Toggle = ({ text, children }) => {
+const Toggle = ({ value }) => {
   return (
     <details>
-      <summary className="cursor-pointer">{text[0].text.content}</summary>
-      {children?.map((block) => {
+      <summary className="cursor-pointer">{value.rich_text[0].text.content}</summary>
+      {value.children?.map((block) => {
         if (block.type === 'paragraph') {
-          return <Text key={block.id} text={block.paragraph.text} id={block.id} />
+          return <Text key={block.id} text={block.paragraph.rich_text} id={block.id} />
         }
       })}
     </details>

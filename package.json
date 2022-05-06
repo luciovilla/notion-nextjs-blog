@@ -1,7 +1,7 @@
 {
   "name": "notion-nextjs-blog",
   "description": "A starter blog template powered by Next.js, Notion and Tailwind CSS",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": {
     "name": "Lucio Villa",
     "email": "hi@luciovilla.com",
@@ -18,14 +18,14 @@
     "start": "next start"
   },
   "dependencies": {
-    "@notionhq/client": "0.4.4",
-    "next": "11.1.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "@notionhq/client": "1.0.4",
+    "next": "12.1.5",
+    "react": "18.1.0",
+    "react-dom": "18.1.0"
   },
   "devDependencies": {
-    "autoprefixer": "10.2.5",
-    "postcss": "8.2.15",
-    "tailwindcss": "2.2.17"
+    "autoprefixer": "10.4.5",
+    "postcss": "8.4.13",
+    "tailwindcss": "3.0.24"
   }
 }
