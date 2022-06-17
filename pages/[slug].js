@@ -19,7 +19,7 @@ export default function Post({ page, blocks }) {
         })}
       </span>
 
-      <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-5 text-black">
+      <h1 className="mb-5 text-3xl font-bold tracking-tight text-black md:text-5xl">
         {page.properties.Post.title[0].plain_text}
       </h1>
 

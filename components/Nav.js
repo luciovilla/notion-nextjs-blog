@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 const ExternalLink = ({ href, children }) => (
   <a
-    className="p-1 sm:p-4 text-gray-900 hover:underline"
+    className="p-1 text-gray-900 hover:underline sm:p-4"
     target="_blank"
     rel="noopener noreferrer"
     href={href}
@@ -13,14 +13,14 @@ const ExternalLink = ({ href, children }) => (
 
 export default function Nav() {
   return (
-    <nav className="flex justify-center items-center max-w-4xl w-full p-8 my-0 md:my-8 mx-auto">
+    <nav className="flex justify-center items-center p-8 my-0 mx-auto w-full max-w-4xl md:my-8">
       <a href="#skip" className="sr-only focus:not-sr-only">
         Skip to content
       </a>
 
       <div>
         <Link href="/">
-          <a className="p-1 sm:p-4 text-gray-900 hover:underline">Home</a>
+          <a className="p-1 text-gray-900 hover:underline sm:p-4">Home</a>
         </Link>
         <ExternalLink href="https://twitter.com/luciovilla">Contact</ExternalLink>
         <ExternalLink href="https://github.com/luciovilla/notion-nextjs-blog">

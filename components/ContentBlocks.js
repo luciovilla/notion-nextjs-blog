@@ -95,19 +95,19 @@ const Heading = ({ text, level }) => {
   switch (level) {
     case 'heading_1':
       return (
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight my-2 text-black">
+        <h1 className="my-2 text-3xl font-bold tracking-tight text-black md:text-5xl">
           <SpanText text={text} />
         </h1>
       )
     case 'heading_2':
       return (
-        <h2 className="font-bold text-2xl md:text-3xl tracking-tight my-2 text-black">
+        <h2 className="my-2 text-2xl font-bold tracking-tight text-black md:text-3xl">
           <SpanText text={text} />
         </h2>
       )
     case 'heading_3':
       return (
-        <h3 className="font-bold text-lg md:text-xl tracking-tight my-2 text-black">
+        <h3 className="my-2 text-lg font-bold tracking-tight text-black md:text-xl">
           <SpanText text={text} />
         </h3>
       )

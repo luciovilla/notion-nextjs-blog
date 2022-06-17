@@ -6,8 +6,8 @@ import { getNotionData } from '../lib/getNotionData'
 export default function Home({ posts }) {
   return (
     <Container>
-      <div className="max-w-2xl mx-auto mb-16">
-        <div className="flex justify-center items-center mb-4 max-w-sm mx-auto">
+      <div className="mx-auto mb-16 max-w-2xl">
+        <div className="flex justify-center items-center mx-auto mb-4 max-w-sm">
           <Image src="/notion.svg" height={60} width={60} alt="Notion logo" />
           <span className="mx-4">+</span>
           <Image src="/nextjs.svg" height={80} width={133} alt="Next.js logo" />
@@ -15,10 +15,10 @@ export default function Home({ posts }) {
           <Image src="/tailwindcss.svg" height={24} width={192} alt="Tailwind CSS logo" />
         </div>
         <div className="mb-16">
-          <h1 className="font-bold text-3xl md:text-center w-full md:text-5xl tracking-tight mb-2 text-black mx-auto max-w-xl">
+          <h1 className="mx-auto mb-2 w-full max-w-xl text-3xl font-bold tracking-tight text-black md:text-5xl md:text-center">
             Starter blog template powered by Next.js, Notion and Tailwind CSS
           </h1>
-          <p className="text-gray-700 mb-5 md:text-center max-w-xl mx-auto">
+          <p className="mx-auto mb-5 max-w-xl text-gray-700 md:text-center">
             This is an open-source starter blog template that is statically generated with{' '}
             <a
               href="https://nextjs.org/"
@@ -62,21 +62,21 @@ export default function Home({ posts }) {
             .
           </p>
         </div>
-        <h2 className="font-bold text-2xl md:text-3xl tracking-tight mb-4 mt-8 text-black">
+        <h2 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-black md:text-3xl">
           Blog Posts
         </h2>
 
-        {!posts.length && <p className="text-gray-600 mb-4">No posts found.</p>}
+        {!posts.length && <p className="mb-4 text-gray-600">No posts found.</p>}
 
         {posts.map((post) => {
           const postImage = post.properties['Cover Image'].files[0]
           const postImageUrl =
             postImage?.type === 'file' ? postImage.file.url : postImage?.external.url
           return (
-            <div key={post.id} className="sm:flex mb-8">
+            <div key={post.id} className="mb-8 sm:flex">
               {postImageUrl && (
                 <Link href={`/${post.properties.Slug.rich_text[0].plain_text}`}>
-                  <a className="w-full sm:w-1/3 sm:mr-5 mb-10 sm:mb-0 block">
+                  <a className="block mb-10 w-full sm:mr-5 sm:mb-0 sm:w-1/3">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img alt="" src={postImageUrl} />
                   </a>
@@ -85,10 +85,10 @@ export default function Home({ posts }) {
               <Link href={`/${post.properties.Slug.rich_text[0].plain_text}`}>
                 <a className="w-full">
                   <div className="w-full">
-                    <h3 className="text-xl font-medium w-full text-gray-900">
+                    <h3 className="w-full text-xl font-medium text-gray-900">
                       {post.properties.Post.title[0].plain_text}
                     </h3>
-                    <p className="text-gray-700 text-md">
+                    <p className="text-gray-700">
                       {post.properties.Description.rich_text[0].plain_text}
                     </p>
                   </div>
