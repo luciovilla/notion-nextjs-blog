@@ -69,19 +69,32 @@ export default function Home({ posts }) {
         {!posts.length && <p className="text-gray-600 mb-4">No posts found.</p>}
 
         {posts.map((post) => {
+          const postImage = post.properties['Cover Image'].files[0]
+          const postImageUrl =
+            postImage?.type === 'file' ? postImage.file.url : postImage?.external.url
           return (
-            <Link key={post.id} href={`/${post.properties.Slug.rich_text[0].plain_text}`}>
-              <a className="w-full">
-                <div className="mb-8 w-full">
-                  <h3 className="text-xl font-medium w-full text-gray-900">
-                    {post.properties.Post.title[0].plain_text}
-                  </h3>
-                  <p className="text-gray-700 text-md">
-                    {post.properties.Description.rich_text[0].plain_text}
-                  </p>
-                </div>
-              </a>
-            </Link>
+            <div key={post.id} className="sm:flex mb-8">
+              {postImageUrl && (
+                <Link href={`/${post.properties.Slug.rich_text[0].plain_text}`}>
+                  <a className="w-full sm:w-1/3 sm:mr-5 mb-10 sm:mb-0 block">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img alt="" src={postImageUrl} />
+                  </a>
+                </Link>
+              )}
+              <Link href={`/${post.properties.Slug.rich_text[0].plain_text}`}>
+                <a className="w-full">
+                  <div className="w-full">
+                    <h3 className="text-xl font-medium w-full text-gray-900">
+                      {post.properties.Post.title[0].plain_text}
+                    </h3>
+                    <p className="text-gray-700 text-md">
+                      {post.properties.Description.rich_text[0].plain_text}
+                    </p>
+                  </div>
+                </a>
+              </Link>
+            </div>
           )
         })}
       </div>

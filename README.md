@@ -23,6 +23,7 @@ This is an open-source starter blog template that is statically generated with N
 - `Date` (date): the display date and meta published_time property.
 - `Description` (text): this is the preview text on the homepage and the meta description property.
 - `Published` (checkbox): this checks if a blog post should be displayed when deployed. 
+- `Cover Image` (files & media): optional - adds a cover image for a post on the frontpage and becomes the featured image on social (og:image, twitter card image).
 
 View this sample template table in [Notion](https://vast-rifle-eed.notion.site/8dde3326f8cb4cc68b47a96bea86e9be).
 
