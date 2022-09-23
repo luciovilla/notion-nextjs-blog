@@ -4,6 +4,9 @@ export const RenderBlocks = ({ blocks }) => {
     const value = block[type]
 
     switch (type) {
+      case 'divider':
+        return <hr className="w-full border" key={id} />
+
       case 'paragraph':
         return <Text text={value.rich_text} id={id} key={id} />
 
@@ -15,6 +18,13 @@ export const RenderBlocks = ({ blocks }) => {
 
       case 'heading_3':
         return <Heading text={value.rich_text} id={id} level={type} key={id} />
+
+      case 'quote':
+        return (
+          <blockquote key={id} className="pl-4 border-l-2 border-l-black">
+            <SpanText id={id} text={value.rich_text} />
+          </blockquote>
+        )
 
       case 'bulleted_list_item':
       case 'numbered_list_item':
