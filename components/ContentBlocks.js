@@ -21,7 +21,7 @@ export const RenderBlocks = ({ blocks }) => {
 
       case 'quote':
         return (
-          <blockquote key={id} className="pl-4 border-l-2 border-l-black">
+          <blockquote key={id} className="border-l-2 border-l-black pl-4">
             <SpanText id={id} text={value.rich_text} />
           </blockquote>
         )
